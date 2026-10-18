@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HVDL - Hospital Veterinário Demerval Lobão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* RESET & VARIÁVEIS DE COR */
+    :root {
+      --bg-main: #f5f4ee;
+      --bg-card: #ecebe4;
+      --green-dark: #002b1d;
+      --green-accent: #004d38;
+      --text-dark: #1c1c1c;
+      --text-muted: #555555;
+      --border-color: #d1d0c7;
+      --white: #ffffff;
+      --font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      font-family: var(--font-family);
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      background-color: var(--bg-main);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cross {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--green-dark);
+    }
+
+    .logo-text strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .logo-text small {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links a {
+      margin: 0 1.2rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background-color: var(--green-dark);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 3rem 4rem;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--green-accent);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      color: var(--green-dark);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary-dark {
+      background-color: var(--green-dark);
+      color: var(--white);
+      padding: 0.9rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      padding: 0.9rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero-subtext {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-image-container {
+      position: relative;
+    }
+
+    .hero-img {
+      width: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+    }
+
+    .floating-badge {
+      position: absolute;
+      bottom: -20px;
+      left: 20px;
+      background-color: #dbe86c;
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .floating-badge span {
+      display: block;
+      font-weight: bold;
+      color: var(--green-dark);
+    }
+
+    /* INFO BAR */
+    .info-bar {
+      background-color: var(--green-dark);
+      color: var(--white);
+      display: flex;
+      justify-content: space-around;
+      padding: 1.2rem 4rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* SERVIÇOS */
+    .services-section {
+      padding: 5rem 4rem;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 0.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--green-dark);
+      line-height: 1.2;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background-color: var(--bg-card);
+      padding: 2rem;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+    }
+
+    .service-num {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      color: var(--green-dark);
+      margin: 0.5rem 0;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-link {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* CONTATO */
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      padding: 4rem;
+      gap: 4rem;
+    }
+
+    .contact-info h2 {
+      font-size: 2.5rem;
+      color: var(--green-dark);
+      margin: 1rem 0;
+    }
+
+    .contact-details {
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--text-dark);
+      padding: 0.9rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .insta-tag {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-form-card {
+      background-color: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+
+    .contact-form-card h3 {
+      font-size: 1.5rem;
+      color: var(--green-dark);
+    }
+
+    .contact-form-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    form label {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    form input, form select {
+      padding: 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background-color: #fafafa;
+    }
+
+    .btn-submit {
+      background-color: var(--green-dark);
+      color: var(--white);
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding: 4rem;
+    }
+
+    .faq-header h2 {
+      font-size: 2.2rem;
+      color: var(--green-dark);
+      margin-bottom: 2rem;
+    }
+
+    .faq-list details {
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.2rem 0;
+      cursor: pointer;
+    }
+
+    .faq-list summary {
+      font-size: 1.1rem;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      color: var(--green-dark);
+    }
+
+    .faq-list p {
+      margin-top: 0.8rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* BANNER & FOOTER */
+    .footer-banner {
+      background-color: var(--green-dark);
+      color: var(--white);
+      padding: 3rem 4rem;
+      margin: 4rem;
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .banner-content h2 {
+      font-size: 1.8rem;
+    }
+
+    .btn-light {
+      background-color: #dbe86c;
+      color: var(--green-dark);
+      padding: 0.9rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem 4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+
+    /* RESPONSIVIDADE PARA TELEMÓVEIS */
+    @media (max-width: 900px) {
+      .hero, .section-header, .contact-section, .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .info-bar, .footer-banner, footer {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .navbar, .hero, .services-section, .contact-section, .faq-section {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="cross">+</span>
+      <div class="logo-text">
+        <strong>HVDL</strong>
+        <small>HOSPITAL VETERINÁRIO</small>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <a href="tel:8698973718" class="btn-primary">Ligar para o HVDL →</a>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="tagline">✦ AMOR QUE SE TRANSFORMA EM CUIDADO</span>
+      <h1>Para você, pet.<br>Para nós,<br>parte da família.</h1>
+      <p>Cuidado completo, amor incondicional. No Hospital Veterinário Demerval Lobão, consultas, exames e outros serviços se encontram para cuidar de quem faz parte da sua família.</p>
+      
+      <div class="hero-buttons">
+        <a href="tel:8698973718" class="btn-primary-dark">Ligar para o hospital ↗</a>
+        <a href="#servicos" class="btn-secondary">Conheça os serviços</a>
+      </div>
+      <p class="hero-subtext"><strong>Domingo a sábado.</strong> Das 8h às 18h.</p>
+    </div>
+
+    <div class="hero-image-container">
+      <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=800" alt="Cão com flor na boca" class="hero-img">
+      <div class="floating-badge">
+        <span>Um vínculo para a vida.</span>
+        <small>Especialistas em pequenos animais.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="info-item">
+      <span class="icon">🕒</span>
+      <span><strong>Segunda a sábado</strong> - 8h às 18h</span>
+    </div>
+    <div class="info-item">
+      <span class="icon">📍</span>
+      <span>Demerval Lobão - PI</span>
+    </div>
+    <div class="info-item">
+      <span class="icon">📞</span>
+      <span>(86) 9897-3718</span>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" class="services-section">
+    <div class="section-header">
+      <div class="header-left">
+        <span class="section-tag">CUIDADO COMPLETO</span>
+        <h2>Diferentes cuidados.<br>O mesmo amor pelo seu pet.</h2>
+      </div>
+      <div class="header-right">
+        <p>Da prevenção ao acompanhamento, conheça os serviços do HVDL. Entre em contato com a equipe para informações sobre agendamento, preparo e disponibilidade.</p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-num">01 / HVDL</span>
+        <h3>Consultas</h3>
+        <p>Avaliação veterinária e atenção às necessidades de saúde e bem-estar do seu pet.</p>
+        <a href="#contato" class="card-link">Consultar a equipe →</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">02 / HVDL</span>
+        <h3>Cirurgias</h3>
+        <p>Atendimento cirúrgico. Consulte a equipe sobre avaliação, procedimentos e preparo.</p>
+        <a href="#contato" class="card-link">Consultar a equipe →</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">03 / HVDL</span>
+        <h3>Internação</h3>
+        <p>Acompanhamento e monitoramento para os pets que precisam permanecer sob cuidados.</p>
+        <a href="#contato" class="card-link">Consultar a equipe →</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">04 / HVDL</span>
+        <h3>Exames</h3>
+        <p>Exames para auxiliar a avaliação e o acompanhamento clínico.</p>
+        <a href="#contato" class="card-link">Consultar a equipe →</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">05 / HVDL</span>
+        <h3>Ultrassom</h3>
+        <p>Diagnóstico por imagem para apoiar a investigação de diferentes condições.</p>
+        <a href="#contato" class="card-link">Consultar a equipe →</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">06 / HVDL</span>
+        <h3>Raio X</h3>
+        <p>Imagens que auxiliam na identificação e no acompanhamento de condições de saúde.</p>
+        <a href="#contato" class="card-link">Consultar a equipe →</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">07 / HVDL</span>
+        <h3>Vacinação</h3>
+        <p>Cuidado preventivo. Consulte a equipe sobre vacinas e orientações.</p>
+        <a href="#contato" class="card-link">Consultar a equipe →</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">08 / HVDL</span>
+        <h3>Procedimentos diversos</h3>
+        <p>Atendimento para diferentes necessidades do seu pet. Consulte os procedimentos disponíveis.</p>
+        <a href="#contato" class="card-link">Consultar a equipe →</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">09 / HVDL</span>
+        <h3>Serviços funerários com cremação</h3>
+        <p>Uma despedida com respeito, cuidado e acolhimento. Fale com a equipe para orientações.</p>
+        <a href="#contato" class="card-link">Consultar a equipe →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO & FORMULÁRIO -->
+  <section id="contato" class="contact-section">
+    <div class="contact-info">
+      <span class="section-tag">VAMOS CONVERSAR?</span>
+      <h2>O próximo cuidado começa com um olá.</h2>
+      <p>Estamos na Rua Santa Rita, Centro, ao lado do Posto Corujão, em Demerval Lobão-PI. Entre em contato para organizar sua visita.</p>
+      
+      <div class="contact-details">
+        <div>
+          <strong>Horário de funcionamento</strong>
+          <p>Segunda a sábado, das 8h às 18h.</p>
+        </div>
+        <div>
+          <strong>Telefone para contato</strong>
+          <p>(86) 9897-3718</p>
+        </div>
+      </div>
+
+      <div class="contact-actions">
+        <a href="tel:8698973718" class="btn-primary-dark">Ligar agora ↗</a>
+        <a href="#" class="btn-outline">Ver no mapa ↗</a>
+      </div>
+
+      <a href="https://instagram.com/hvdl.oficial" target="_blank" class="insta-tag">@hvdl.oficial ✓</a>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <div class="contact-form-card">
+      <h3>Prepare sua mensagem</h3>
+      <p>Preencha, copie e envie pelo Instagram. Nenhuma informação é guardada neste site.</p>
+
+      <form onsubmit="return false;">
+        <label>Nome do seu pet (opcional)</label>
+        <input type="text" placeholder="Como se chama seu companheiro?">
+
+        <label>Sobre o que você quer conversar?</label>
+        <select>
+          <option>Informações sobre atendimento</option>
+          <option>Agendamento de consulta</option>
+          <option>Exames e diagnósticos</option>
+          <option>Outros assuntos</option>
+        </select>
+
+        <button type="submit" class="btn-submit">Copiar mensagem 📩</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="duvidas" class="faq-section">
+    <div class="faq-header">
+      <span class="section-tag">ANTES DA SUA VISITA</span>
+      <h2>Vamos facilitar o primeiro contato.</h2>
+    </div>
+
+    <div class="faq-list">
+      <details>
+        <summary>Quais serviços o HVDL oferece? <span>+</span></summary>
+        <p>Oferecemos consultas, cirurgias, internação, exames laboratoriais, ultrassom, raio-x, vacinação e cremação.</p>
+      </details>
+      <details>
+        <summary>Qual é o horário de funcionamento? <span>+</span></summary>
+        <p>Funcionamos de segunda a sábado, das 8h às 18h.</p>
+      </details>
+      <details>
+        <summary>Onde fica o hospital? <span>+</span></summary>
+        <p>Na Rua Santa Rita, Centro, ao lado do Posto Corujão, em Demerval Lobão-PI.</p>
+      </details>
+      <details>
+        <summary>Como posso entrar em contato? <span>+</span></summary>
+        <p>Através do telefone/WhatsApp (86) 9897-3718 ou pelo Instagram @hvdl.oficial.</p>
+      </details>
+      <details>
+        <summary>Como solicitar atendimento? <span>+</span></summary>
+        <p>Basta ligar diretamente para nossa recepção ou enviar uma mensagem pelas redes sociais.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- BANNER FINAL -->
+  <section class="footer-banner">
+    <div class="banner-content">
+      <h2>Quem faz parte da família merece cuidado.</h2>
+      <p>Hospital Veterinário de Demerval Lobão – Mais que um hospital, somos família.</p>
+    </div>
+    <a href="https://instagram.com/hvdl.oficial" target="_blank" class="btn-light">Visitar nosso Instagram ↗</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <strong>HVDL</strong>
+      <small>HOSPITAL VETERINÁRIO DE DEMERVAL LOBÃO</small>
+    </div>
+    <div class="footer-center">
+      <p>HVDL - Demerval Lobão - PI</p>
+      <p>Imagens ilustrativas.</p>
+    </div>
+    <div class="footer-right">
+      <a href="#">Voltar ao início ↑</a>
+      <a href="https://instagram.com/hvdl.oficial">Instagram ↗</a>
+    </div>
+  </footer>
+
+</body>
+</html>
